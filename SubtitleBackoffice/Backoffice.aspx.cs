@@ -539,7 +539,7 @@ namespace SubtitleBackoffice
                 }
                 catch (Exception ex)
                 {
-                    Log.SetLog(Storage.BASE_DIRECTORY + @"\log.txt");
+                    //Log.SetLog(Storage.BASE_DIRECTORY + @"\log.txt");
                     Log.WriteLine("##### 접근 권한 확인 #####");
                     Log.WriteLine(ex.ToString());
                 }

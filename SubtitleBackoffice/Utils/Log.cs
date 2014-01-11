@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.IO;
+using SubtitleBackoffice.Utils;
 
 namespace SubtitleBackoffice
 {
@@ -15,7 +16,7 @@ namespace SubtitleBackoffice
         ///////////////////////////////////////////////////////////////////////////////////////////
         // Constructor
         ///////////////////////////////////////////////////////////////////////////////////////////
-        public static void SetLog(string _FileName)
+        private static void SetLog(string _FileName)
         {
             try
             {
@@ -48,7 +49,7 @@ namespace SubtitleBackoffice
             // Is Log active?
             if (!isActive)
             {
-                SetLog(@"f:\log2.txt");
+                SetLog(Storage.LOGFILE);
             }
 
             if (ToFile)
