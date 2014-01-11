@@ -67,14 +67,14 @@ namespace SubtitleBackoffice
                             core = null;
                             myWorker = null;
 
-                            Log.WriteLine2(@"C:\tmp\dblog.txt", String.Format("{5}/{6} - {0},{1},{2},{3},{4}",
+                            Log.WriteLine2(@"C:\Data\dblog.txt", String.Format("{5}/{6} - {0},{1},{2},{3},{4}",
                                 rdr.GetString(1), rdr.GetString(2), rdr.GetString(3), rdr.GetString(4), rdr.GetInt32(5).ToString(CultureInfo.InvariantCulture),
                                 i, count));
                             i++;
                         }
                         con.Close();
 
-                        Log.WriteLine2(@"C:\tmp\dblog.txt", "GENERATION DONE");
+                        Log.WriteLine2(@"C:\Data\dblog.txt", "GENERATION DONE");
                     }
                 }
             }
