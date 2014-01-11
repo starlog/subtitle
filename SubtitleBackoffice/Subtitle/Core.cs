@@ -1,0 +1,40 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+
+namespace SubtitleBackoffice.Subtitle
+{
+    ///////////////////////////////////////////////////////////////////////////////////////////////
+    // Storage class for format neutral
+    ///////////////////////////////////////////////////////////////////////////////////////////////
+    public class Core
+    {
+        public List<SubtitleItem> _list;
+
+        ///////////////////////////////////////////////////////////////////////////////////////////
+        public Core()
+        {
+            _list = new List<SubtitleItem>();
+        }
+
+        ///////////////////////////////////////////////////////////////////////////////////////////
+        public void Add(Duration start_time, Duration end_time, String content)
+        {
+            SubtitleItem tmp = new SubtitleItem(start_time, end_time, content);
+            _list.Add(tmp);
+        }
+
+        ///////////////////////////////////////////////////////////////////////////////////////////
+        public SubtitleItem Get(int index)
+        {
+            return _list.ElementAt<SubtitleItem>(index);
+        }
+
+        ///////////////////////////////////////////////////////////////////////////////////////////
+        public int Count()
+        {
+            return _list.Count;
+        }
+    }
+}
