@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="subtitle" Class="DataClasses1DataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=localhost\sqlexpress;Initial Catalog=subtitle;Persist Security Info=True;User ID=subtitle" SettingsObjectName="LogAnalysis.Properties.Settings" SettingsPropertyName="subtitleConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.EpisodeTable" Member="EpisodeTables">
+    <Type Name="EpisodeTable">
+      <Column Name="[key]" Member="key" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Id" Type="System.String" DbType="NVarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="Image" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="Tag" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="PriceType" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="PriceInWon" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ProgramId" Type="System.String" DbType="NVarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="ProgramName" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="MajorEpisodeNo" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="MinorEpisodeNo" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ProgramGroupId" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ProgramGroupName" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="ChannelId" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ChannelName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ViewCountForLastHour" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Ranking" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Streammable" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MessageForNotStreammable" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="Downloadable" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MessageForNotDownloadable" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="RatingAge" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Subtitle" Member="Subtitles">
+    <Type Name="Subtitle">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ContentID" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="EpisodeNumber" Type="System.String" DbType="VarChar(4)" CanBeNull="true" />
+      <Column Name="CategoryCode" Type="System.String" DbType="VarChar(3)" CanBeNull="true" />
+      <Column Name="CountryCode" Type="System.String" DbType="VarChar(3)" CanBeNull="true" />
+      <Column Name="StatusCode" Type="System.String" DbType="VarChar(3)" CanBeNull="true" />
+      <Column Name="UpdateDate" Type="System.DateTime" DbType="DateTime2" CanBeNull="true" />
+      <Column Name="URL" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="subtitle" Member="subtitle1" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+    </Type>
+  </Table>
+</Database>
