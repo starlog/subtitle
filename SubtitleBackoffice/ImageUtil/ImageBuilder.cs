@@ -162,6 +162,9 @@ namespace SubtitleBackoffice.ImageUtil
             bmp.Save(FileName + ".png", System.Drawing.Imaging.ImageFormat.Png);
 
             bmp.Dispose();
+
+            image.Dispose();
+            ms.Dispose();
         }
     }
 }

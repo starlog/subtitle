@@ -33,7 +33,7 @@
             </asp:SqlDataSource>
         </div>
         <br />
-        <dx:ASPxPageControl ID="ASPxPageControl1" runat="server" ActiveTabIndex="0" EnableTheming="True" RenderMode="Lightweight" Theme="Office2003Blue" Width="570px">
+        <dx:ASPxPageControl ID="ASPxPageControl1" runat="server" ActiveTabIndex="3" EnableTheming="True" RenderMode="Lightweight" Theme="Office2003Blue" Width="570px">
             <TabPages>
                 <dx:TabPage Text="카데고리 코드 편집">
                     <ContentCollection>
@@ -161,6 +161,14 @@
                                     <asp:Parameter Name="ID" Type="Int32" />
                                 </UpdateParameters>
                             </asp:SqlDataSource>
+                        </dx:ContentControl>
+                    </ContentCollection>
+                </dx:TabPage>
+                <dx:TabPage Text="시스템 리빌드">
+                    <ContentCollection>
+                        <dx:ContentControl runat="server" SupportsDisabledAttribute="True">
+                            <dx:ASPxButton ID="ASPxButton1" runat="server" OnClick="ASPxButton1_Click" Text="자막 빌딩">
+                            </dx:ASPxButton>
                         </dx:ContentControl>
                     </ContentCollection>
                 </dx:TabPage>

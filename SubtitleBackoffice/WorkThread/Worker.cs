@@ -21,6 +21,7 @@ namespace SubtitleBackoffice.WorkThread
         private WorkerCallBack callback;
         private string e_ID;
         private string e_ContentName;
+        private string e_mode;
 
         ///////////////////////////////////////////////////////////////////////////////////////////
         // 설정값
@@ -45,6 +46,19 @@ namespace SubtitleBackoffice.WorkThread
             this.e_ContentName = e_ContentName;
             this.e_ID = e_ID;
             this.callback = callback;
+        }
+        public Worker(Core _core, string e_subtitle, string e_ContentID, string e_EpisodeNumber,
+            string e_CountryCode, string e_ContentName, string e_ID, WorkerCallBack callback, string mode)
+        {
+            this._core = _core;
+            this.e_ContentID = e_ContentID;
+            this.e_subtitle = e_subtitle;
+            this.e_EpisodeNumber = e_EpisodeNumber;
+            this.e_CountryCode = e_CountryCode;
+            this.e_ContentName = e_ContentName;
+            this.e_ID = e_ID;
+            this.callback = callback;
+            this.e_mode = mode;
         }
 
 
@@ -123,22 +137,26 @@ namespace SubtitleBackoffice.WorkThread
             ///////////////////////////////////////////////////////////////////////////////////////
             // 이미지 생성
             ///////////////////////////////////////////////////////////////////////////////////////
-            ImageBuilder imgBuilder = new ImageBuilder();
-
-            imgBuilder.setFontFamilly("나눔고딕");     // Set Font familly
-            imgBuilder.setFontSize(34);                 // Set Font size, 40 looks good for 720p
-            imgBuilder.setPenSize(2);                   // Set outline pen thickness
-
             //Dump and generate image
             try
             {
+
                 foreach (SubtitleItem item in _core._list)
                 {
                     // Build image
+                    var imgBuilder = new ImageBuilder();
+
+                    imgBuilder.setFontFamilly("나눔고딕");     // Set Font familly
+                    imgBuilder.setFontSize(34);                 // Set Font size, 40 looks good for 720p
+                    imgBuilder.setPenSize(2);                   // Set outline pen thickness
+
                     imgBuilder.GenerateOutline(ImageSizeX, ImageSizeY, item.ProcessBr(),
                         String.Format("{0}_{1}_{2}", OutputFileName, item.start_time.GetFileNameFormat(),
                         item.end_time.GetFileNameFormat()));
+
+                    imgBuilder = null;
                 }
+
             }
             catch (Exception ex)
             {
@@ -189,6 +207,14 @@ namespace SubtitleBackoffice.WorkThread
                 }
                 return;
             }
+
+            if (e_mode == "BATCH")
+            {
+                Log.WriteLine(String.Format("생성성공:콘텐츠ID:{0},회차:{1},언어:{2} ({3}) ID={4}",
+                    e_ContentID, e_EpisodeNumber, e_CountryCode, e_ContentName, e_ID));
+                return;
+            }
+
             ///////////////////////////////////////////////////////////////////////////////////////
             // 푹에서 회차정보 다시 받기
             ///////////////////////////////////////////////////////////////////////////////////////

@@ -66,5 +66,15 @@ namespace SubtitleBackoffice
                     DateTime.Now.ToLongTimeString(), data);
             }
         }
+        ///////////////////////////////////////////////////////////////////////////////////////////
+        public static void WriteLine2(string sFile, string data)
+        {
+            TextWriter tw = File.AppendText(sFile);
+            tw.WriteLine("{0} {1} {2}",
+                DateTime.Now.ToLongDateString(),
+                DateTime.Now.ToLongTimeString(), data);
+            tw.Flush();
+            tw.Close();
+        }
     }
 }
