@@ -33,8 +33,6 @@ namespace LogAnalysis
         ///////////////////////////////////////////////////////////////////////////////////////////
         private string GetTitle(string code)
         {
-            string rdata=@"바보";
-
             var myData = new DataClasses1DataContext();
 
             var query = (from a in myData.EpisodeTables

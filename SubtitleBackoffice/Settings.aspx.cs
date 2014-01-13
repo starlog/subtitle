@@ -60,11 +60,9 @@ namespace SubtitleBackoffice
                         int i = 0;
                         while (rdr.Read())
                         {
-                            Core core = new Core();
-                            Worker myWorker = new Worker(core, rdr.GetString(0), rdr.GetString(1), rdr.GetString(2), rdr.GetString(3), rdr.GetString(4), rdr.GetInt32(5).ToString(CultureInfo.InvariantCulture), null, "BATCH");
+                            Worker myWorker = new Worker(rdr.GetString(0), rdr.GetString(1), rdr.GetString(2), rdr.GetString(3), rdr.GetString(4), rdr.GetInt32(5).ToString(CultureInfo.InvariantCulture), null, "BATCH");
                             myWorker.Tasks();
 
-                            core = null;
                             myWorker = null;
 
                             Log.WriteLine2(@"C:\Data\dblog.txt", String.Format("{5}/{6} - {0},{1},{2},{3},{4}",

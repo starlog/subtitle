@@ -21,7 +21,7 @@ namespace SubtitleBackoffice.WorkThread
         private WorkerCallBack callback;
         private string e_ID;
         private string e_ContentName;
-        private string e_mode;
+        private string e_mode="";
 
         ///////////////////////////////////////////////////////////////////////////////////////////
         // 설정값
@@ -47,10 +47,10 @@ namespace SubtitleBackoffice.WorkThread
             this.e_ID = e_ID;
             this.callback = callback;
         }
-        public Worker(Core _core, string e_subtitle, string e_ContentID, string e_EpisodeNumber,
+        public Worker(string e_subtitle, string e_ContentID, string e_EpisodeNumber,
             string e_CountryCode, string e_ContentName, string e_ID, WorkerCallBack callback, string mode)
         {
-            this._core = _core;
+            _core = new Core();
             this.e_ContentID = e_ContentID;
             this.e_subtitle = e_subtitle;
             this.e_EpisodeNumber = e_EpisodeNumber;
@@ -82,6 +82,7 @@ namespace SubtitleBackoffice.WorkThread
             //자막 목록 JSON 파일, FileList_S01_V0000379136_VTN.json
             string FileList_JSON = Pattern.GetSubtitleListJSONFilename(e_ContentID, e_EpisodeNumber, e_CountryCode);
 
+
             ///////////////////////////////////////////////////////////////////////////////////////
             // 자막 처리 -> core에 저장
             ///////////////////////////////////////////////////////////////////////////////////////
@@ -101,7 +102,7 @@ namespace SubtitleBackoffice.WorkThread
                 SRT mySRT = new SRT();
                 mySRT.SetContents(subtitleData);
                 mySRT.Process(ref _core);
-            }
+            }                
 
             ///////////////////////////////////////////////////////////////////////////////////////
             // 기존 폴더가 있으면 제거하고 다시 생성
@@ -210,8 +211,17 @@ namespace SubtitleBackoffice.WorkThread
 
             if (e_mode == "BATCH")
             {
+                ///////////////////////////////////////////////////////////////////////////////////////
+                // 결과 기록
+                ///////////////////////////////////////////////////////////////////////////////////////
+                if (callback != null)
+                {
+                    callback(String.Format("생성성공:콘텐츠ID:{0},회차:{1},언어:{2} ({3})",
+                        e_ContentID, e_EpisodeNumber, e_CountryCode, e_ContentName), e_ID);
+                }
                 Log.WriteLine(String.Format("생성성공:콘텐츠ID:{0},회차:{1},언어:{2} ({3}) ID={4}",
                     e_ContentID, e_EpisodeNumber, e_CountryCode, e_ContentName, e_ID));
+                _core = null;
                 return;
             }
 
