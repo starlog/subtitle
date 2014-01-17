@@ -75,7 +75,14 @@ namespace LogAnalysis
                     }
                     else
                     {
-                        sb.Append(GetTitle(groups[i].Value));
+                        try
+                        {
+                            sb.Append(GetTitle(groups[i].Value));
+                        }
+                        catch (Exception)
+                        {
+                            sb.Append(groups[i].Value);
+                        }
                     }
                     if (i + 1 < groups.Count)
                     {
