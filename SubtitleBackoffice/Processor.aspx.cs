@@ -1048,8 +1048,8 @@ namespace SubtitleBackoffice
             e_EpisodeNumber = Request.Params["EpisodeNumber"];
             e_CountryCode = Request.Params["CountryCode"];
 
-           // Log.SetLog(@"f:\log2.txt");
-            Log.WriteLine(string.Format("_ACCESS_LOG_,CID={0},EN={1},CC={2},END", e_ContentID, e_EpisodeNumber, e_CountryCode));
+            // Log.SetLog(@"f:\log2.txt");
+            //Log.WriteLine(string.Format("_ACCESS_LOG_,CID={0},EN={1},CC={2},END", e_ContentID, e_EpisodeNumber, e_CountryCode));
 
             LogDb myLogDb = new LogDb(e_ContentID, int.Parse(e_EpisodeNumber), e_CountryCode);
             myLogDb.Add();           
