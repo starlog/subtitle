@@ -43,10 +43,20 @@
     <Reference Include="DevExpress.Office.v13.1.Core, Version=13.1.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.RichEdit.v13.1.Core, Version=13.1.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Web.v13.1, Version=13.1.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.6.0.2\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.0.2\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\..\..\..\..\..\..\dll\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -147,6 +157,24 @@
     <Compile Include="JSON\V2\Programs\_DataInRange.cs" />
     <Compile Include="JSON\V2\Programs\ProgramList.cs" />
     <Compile Include="JSON\V2\Programs\_Program.cs" />
+    <Compile Include="LogDB.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LogDB.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LogDB.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LogDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LogDB.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LogDB.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="LogTable.cs">
+      <DependentUpon>LogDB.tt</DependentUpon>
+    </Compile>
     <Compile Include="Processor.aspx.cs">
       <DependentUpon>Processor.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -169,6 +197,7 @@
     <Compile Include="Utils\ContentsProcess.cs" />
     <Compile Include="Utils\Log.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utils\LogDb.cs" />
     <Compile Include="Utils\Pattern.cs" />
     <Compile Include="Utils\Storage.cs" />
     <Compile Include="Utils\WebAccess.cs" />
@@ -176,6 +205,23 @@
     <Compile Include="Work\DBOperation_SyncEpisodes.cs" />
   </ItemGroup>
   <ItemGroup>
+    <EntityDeploy Include="LogDB.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>LogDB.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="LogDB.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>LogDB.edmx</DependentUpon>
+      <LastGenOutput>LogDB.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="LogDB.edmx.diagram">
+      <DependentUpon>LogDB.edmx</DependentUpon>
+    </Content>
+    <Content Include="LogDB.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>LogDB.edmx</DependentUpon>
+      <LastGenOutput>LogDB.cs</LastGenOutput>
+    </Content>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -186,7 +232,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Properties\licenses.licx" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

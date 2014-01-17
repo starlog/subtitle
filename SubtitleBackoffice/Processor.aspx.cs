@@ -1050,6 +1050,10 @@ namespace SubtitleBackoffice
 
            // Log.SetLog(@"f:\log2.txt");
             Log.WriteLine(string.Format("_ACCESS_LOG_,CID={0},EN={1},CC={2},END", e_ContentID, e_EpisodeNumber, e_CountryCode));
+
+            LogDb myLogDb = new LogDb(e_ContentID, int.Parse(e_EpisodeNumber), e_CountryCode);
+            myLogDb.Add();           
+            
             string FileList_JSON
                 = String.Format(@"\image\{0}\{1}_{2}_{3}\FileList_S{4}_{5}_{6}.json",
                 e_ContentID,
@@ -1059,6 +1063,8 @@ namespace SubtitleBackoffice
                 e_EpisodeNumber,
                 e_ContentID,
                 e_CountryCode);
+
+
 
             string CallbackNameGetSubtitleList = "";
 
