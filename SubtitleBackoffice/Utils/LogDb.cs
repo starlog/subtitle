@@ -11,23 +11,26 @@ namespace SubtitleBackoffice.Utils
         private string _contentId;
         private int _eposideNumber;
         private string _languageCode;
+        private string _device;
 
-        public LogDb(string contentId, int episodeNumber, string languageCode)
+        public LogDb(string contentId, int episodeNumber, string languageCode, string device)
         {
             this._contentId = contentId;
             this._eposideNumber = episodeNumber;
             this._languageCode = languageCode;
+            this._device = device;
         }
 
         public void Add()
         {
-            using (var db = new LogDBConnection())
+            using (var db = new LogDBCon())
             {
                 var accessLog = new LogTable
                 {
                     ContentID = this._contentId,
                     EpisodeNumber = this._eposideNumber,
                     LanguageCode = this._languageCode,
+                    Device= this._device,
                     LogDate = DateTime.Now
                 };
 

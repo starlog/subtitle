@@ -17,13 +17,14 @@
           <Property Name="ContentID" Type="nvarchar(max)" Nullable="false" />
           <Property Name="EpisodeNumber" Type="int" Nullable="false" />
           <Property Name="LanguageCode" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Device" Type="nvarchar(max)" />
         </EntityType>
       </Schema>
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="subtitleModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityContainer Name="LogDBConnection" p1:LazyLoadingEnabled="true">
+        <EntityContainer Name="LogDBCon" p1:LazyLoadingEnabled="true">
           <EntitySet Name="LogTable" EntityType="subtitleModel.LogTable" />
         </EntityContainer>
         <EntityType Name="LogTable">
@@ -35,13 +36,14 @@
           <Property Name="ContentID" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
           <Property Name="EpisodeNumber" Type="Int32" Nullable="false" />
           <Property Name="LanguageCode" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Device" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="subtitleModelStoreContainer" CdmEntityContainer="LogDBConnection">
+        <EntityContainerMapping StorageEntityContainer="subtitleModelStoreContainer" CdmEntityContainer="LogDBCon">
           <EntitySetMapping Name="LogTable">
             <EntityTypeMapping TypeName="subtitleModel.LogTable">
               <MappingFragment StoreEntitySet="LogTable">
@@ -50,6 +52,7 @@
                 <ScalarProperty Name="ContentID" ColumnName="ContentID" />
                 <ScalarProperty Name="EpisodeNumber" ColumnName="EpisodeNumber" />
                 <ScalarProperty Name="LanguageCode" ColumnName="LanguageCode" />
+                <ScalarProperty Name="Device" ColumnName="Device" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

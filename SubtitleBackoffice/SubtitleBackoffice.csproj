@@ -53,6 +53,7 @@
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\..\..\..\..\..\..\dll\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="System.Data.Entity" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
@@ -203,6 +204,7 @@
     <Compile Include="Work\DBOperation_SyncEpisodes.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="packages.config" />
     <EntityDeploy Include="LogDB.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>LogDB.Designer.cs</LastGenOutput>
@@ -220,7 +222,6 @@
       <DependentUpon>LogDB.edmx</DependentUpon>
       <LastGenOutput>LogDB.cs</LastGenOutput>
     </Content>
-    <Content Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

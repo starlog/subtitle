@@ -13,10 +13,10 @@ namespace SubtitleBackoffice
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class LogDBConnection : DbContext
+    public partial class LogDBCon : DbContext
     {
-        public LogDBConnection()
-            : base("name=LogDBConnection")
+        public LogDBCon()
+            : base("name=LogDBCon")
         {
         }
     

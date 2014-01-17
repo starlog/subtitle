@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="44870c09df294a33b8343e2863185240" Name="Diagram1">
+      <Diagram DiagramId="62ca6ab437a2480099854191af1f83a1" Name="Diagram1">
         <EntityTypeShape EntityType="subtitleModel.LogTable" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
       </Diagram>
     </edmx:Diagrams>

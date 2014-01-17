@@ -19,5 +19,6 @@ namespace SubtitleBackoffice
         public string ContentID { get; set; }
         public int EpisodeNumber { get; set; }
         public string LanguageCode { get; set; }
+        public string Device { get; set; }
     }
 }

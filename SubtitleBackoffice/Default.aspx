@@ -148,6 +148,7 @@
             <br />
             CountryCode: ISO 국가코드 (“KOR”, “CHN”, “USA”, “JPN”, “VNM”) 
             <br />
+            <font color="red">Device: 접속하는 장비의 형태 (&quot;PC&quot;, &quot;TV&quot;)</font><br />
             <table style="width: 100%; background-color: bisque">
                 <tr>
                     <td class="auto-style3">콘텐츠ID:</td>
@@ -183,8 +184,8 @@
 
             <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:subtitleConnectionString %>" SelectCommand="SELECT [Code], [Desc] FROM [Code_Country]"></asp:SqlDataSource>
             <br />
-            <p><a href="Processor.aspx?Cmd=GetSubtitleList&ContentID=K01_T2012-0325&EpisodeNumber=1&CountryCode=JPN">Processor.aspx?Cmd=GetSubtitleList&ContentID=K01_T2012-0325&EpisodeNumber=1&CountryCode=JPN</a></p>
-            <p><a href="Processor.aspx?Cmd=GetSubtitleList&ContentID=K01_T2012-0325&EpisodeNumber=1&CountryCode=JPN&callback=MyCallback">Processor.aspx?Cmd=GetSubtitleList&ContentID=K01_T2012-0325&EpisodeNumber=1&CountryCode=JPN&callback=MyCallback</a></p>
+            <p><a href="Processor.aspx?Cmd=GetSubtitleList&ContentID=M_1002692100000100000&EpisodeNumber=1&CountryCode=KOR&Device=PC">Processor.aspx?Cmd=GetSubtitleList&ContentID=M_1002692100000100000&EpisodeNumber=1&CountryCode=KOR&Device=PC</a></p>
+            <p><a href="Processor.aspx?Cmd=GetSubtitleList&ContentID=M_1002692100000100000&EpisodeNumber=1&CountryCode=KOR&Device=PC&callback=MyCallback">Processor.aspx?Cmd=GetSubtitleList&ContentID=M_1002692100000100000&EpisodeNumber=1&CountryCode=KOR&Device=PC&callback=MyCallback</a></p>
             <br />
             <h3>Cmd: GetSubtitleDirectory</h3>
             <hr />

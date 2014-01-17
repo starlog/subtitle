@@ -1049,9 +1049,23 @@ namespace SubtitleBackoffice
             e_CountryCode = Request.Params["CountryCode"];
 
             // Log.SetLog(@"f:\log2.txt");
-            //Log.WriteLine(string.Format("_ACCESS_LOG_,CID={0},EN={1},CC={2},END", e_ContentID, e_EpisodeNumber, e_CountryCode));
+            string deviceName = "";
+            try
+            {
+                deviceName = Request.Params["Device"];
+            }
+            catch (Exception)
+            {
+                deviceName = "NULL";
+            }
+            if (deviceName == null)
+            {
+                deviceName = "PC";
+            }
 
-            LogDb myLogDb = new LogDb(e_ContentID, int.Parse(e_EpisodeNumber), e_CountryCode);
+            Log.WriteLine(string.Format("_ACCESS_LOG_,CID={0},EN={1},CC={2},DEV={3},END", e_ContentID, e_EpisodeNumber, e_CountryCode, deviceName));
+
+            LogDb myLogDb = new LogDb(e_ContentID, int.Parse(e_EpisodeNumber), e_CountryCode, deviceName);
             myLogDb.Add();           
             
             string FileList_JSON
