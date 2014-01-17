@@ -61,11 +61,11 @@
             // 
             // button_analysis
             // 
-            this.button_analysis.Location = new System.Drawing.Point(131, 235);
+            this.button_analysis.Location = new System.Drawing.Point(137, 235);
             this.button_analysis.Name = "button_analysis";
-            this.button_analysis.Size = new System.Drawing.Size(75, 23);
+            this.button_analysis.Size = new System.Drawing.Size(147, 23);
             this.button_analysis.TabIndex = 2;
-            this.button_analysis.Text = "로그찾기";
+            this.button_analysis.Text = "로그처리하기(DB삽입)";
             this.button_analysis.UseVisualStyleBackColor = true;
             this.button_analysis.Click += new System.EventHandler(this.button_analysis_Click);
             // 
@@ -96,7 +96,7 @@
             // 
             // button_save
             // 
-            this.button_save.Location = new System.Drawing.Point(222, 235);
+            this.button_save.Location = new System.Drawing.Point(315, 235);
             this.button_save.Name = "button_save";
             this.button_save.Size = new System.Drawing.Size(75, 23);
             this.button_save.TabIndex = 5;

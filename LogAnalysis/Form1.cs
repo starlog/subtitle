@@ -50,50 +50,44 @@ namespace LogAnalysis
         ///////////////////////////////////////////////////////////////////////////////////////////
         private void button_analysis_Click(object sender, EventArgs e)
         {
-            const string pattern = @"(.*?)년 (.*?)월 (.*?)일 .*?_ACCESS_LOG_,CID=(.*?),EN=(.*?),CC=(.*?),END";
+            const string pattern = @"(.*?) _ACCESS_LOG_,CID=(.*?),EN=(.*?),CC=(.*?),END";
             int count = 0;
 
             var exp = new Regex(pattern, RegexOptions.IgnoreCase);
-
-            var sb = new StringBuilder();
 
             if (!exp.IsMatch(textBox_Data.Text)) return;
 
 
             var matchList = exp.Matches(textBox_Data.Text);
 
-            foreach (Match firstMatch in matchList)
+            using (var db = new LogDBConnection())
             {
-                count++;
-                var groups = firstMatch.Groups;
-
-                for (int i = 1; i < groups.Count; i++)
+                foreach (Match firstMatch in matchList)
                 {
-                    if (i != 4)
+                    count++;
+                    var groups = firstMatch.Groups;
+
+                    var accessLog = new LogTable
                     {
-                        sb.Append(groups[i].Value);
-                    }
-                    else
-                    {
-                        try
-                        {
-                            sb.Append(GetTitle(groups[i].Value));
-                        }
-                        catch (Exception)
-                        {
-                            sb.Append(groups[i].Value);
-                        }
-                    }
-                    if (i + 1 < groups.Count)
-                    {
-                        sb.Append(",");
-                    }
+                        ContentID = groups[2].Value,
+                        EpisodeNumber = int.Parse(groups[3].Value),
+                        LanguageCode = groups[4].Value,
+                        LogDate = DateTime.Parse(groups[1].Value)
+                    };
+
+                    db.LogTable.Add(accessLog);
+                    db.SaveChanges();
+
+                    textBox_result.Text += String.Format("{0},{1},{2},{3}", 
+                        groups[1].Value,groups[2].Value,groups[3].Value,groups[4].Value) + Environment.NewLine;
+
+                    textBox_result.Refresh();
+                    textBox_result.SelectionStart = textBox_result.Text.Length;
+                    textBox_result.ScrollToCaret();
                 }
-                sb.Append("\r\n");
             }
 
-            textBox_result.Text = sb.ToString();
-            toolStripStatusLabel1.Text = String.Format("{0}행 처리 완료", count.ToString());
+            toolStripStatusLabel1.Text = String.Format("{0}행 처리 완료", count);
         }
 
         private void button_save_Click(object sender, EventArgs e)
