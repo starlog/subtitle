@@ -87,6 +87,7 @@ namespace SubtitleBackoffice.Subtitle
                         _core.Add(start, end, groups[10].Value);
                     }
                 }
+
             }
         }
     }

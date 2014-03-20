@@ -128,7 +128,8 @@ namespace Rebuilder
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            CoreCount = Environment.ProcessorCount*2;
+            //CoreCount = Environment.ProcessorCount*2;
+            CoreCount = 2;
             this.AddText(String.Format("Core count is {0}", CoreCount));
 
         }

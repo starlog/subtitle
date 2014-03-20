@@ -89,7 +89,7 @@ namespace SubtitleBackoffice.WorkThread
             string subtitleData = e_subtitle;
 
             //Recover < and >
-            subtitleData = subtitleData.Replace("&lt;", "<").Replace("&gt;", ">");
+            subtitleData = subtitleData.Replace("&lt;", "<").Replace("&gt;", ">") + Environment.NewLine + Environment.NewLine;
 
             if (subtitleData.StartsWith("<SAMI")) //SAMI or SRT
             {
