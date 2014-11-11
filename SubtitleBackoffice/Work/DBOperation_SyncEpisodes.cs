@@ -126,9 +126,9 @@ namespace SubtitleBackoffice.Work
                             cmd.Parameters.Add(new SqlParameter("Date", dt));
                             cmd.Parameters.Add(new SqlParameter("ViewCountForLastHour", jRecord["ViewCountForLastHour"].ToString()));
                             cmd.Parameters.Add(new SqlParameter("Ranking", jRecord["Ranking"].ToString()));
-                            cmd.Parameters.Add(new SqlParameter("Streamable", (jRecord["Streamable"].ToString() == "true" ? "1" : "0")));
+                            cmd.Parameters.Add(new SqlParameter("Streamable", (jRecord["Streamable"].ToString().ToLower() == "true" ? "1" : "0")));
                             cmd.Parameters.Add(new SqlParameter("MessageForNotStreamable", jRecord["MessageForNotStreamable"].ToString()));
-                            cmd.Parameters.Add(new SqlParameter("Downloadable", (jRecord["Downloadable"].ToString() == "true" ? "1" : "0")));
+                            cmd.Parameters.Add(new SqlParameter("Downloadable", (jRecord["Downloadable"].ToString().ToLower() == "true" ? "1" : "0")));
                             cmd.Parameters.Add(new SqlParameter("MessageForNotDownloadable", jRecord["MessageForNotDownloadable"].ToString()));
                             cmd.Parameters.Add(new SqlParameter("RatingAge", jRecord["RatingAge"].ToString()));
 

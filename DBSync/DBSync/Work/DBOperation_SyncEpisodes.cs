@@ -58,6 +58,10 @@ namespace DBSync.Work
 
         public static bool Process(string ContentID)
         {
+            if (String.IsNullOrEmpty(ContentID))
+            {
+                return true;
+            }
             ///////////////////////////////////////////////////////////////////////////////////////
             // Access /content.json/programs/{program-id} for each programs
             ///////////////////////////////////////////////////////////////////////////////////////
@@ -102,9 +106,9 @@ namespace DBSync.Work
                             cmd.Parameters.Add(new SqlParameter("Date", dt));
                             cmd.Parameters.Add(new SqlParameter("ViewCountForLastHour", jRecord["ViewCountForLastHour"].ToString()));
                             cmd.Parameters.Add(new SqlParameter("Ranking", jRecord["Ranking"].ToString()));
-                            cmd.Parameters.Add(new SqlParameter("Streamable", (jRecord["Streamable"].ToString() == "True" ? "1" : "0")));
+                            cmd.Parameters.Add(new SqlParameter("Streamable", (jRecord["Streamable"].ToString().ToLower() == "true" ? "1" : "0")));
                             cmd.Parameters.Add(new SqlParameter("MessageForNotStreamable", jRecord["MessageForNotStreamable"].ToString()));
-                            cmd.Parameters.Add(new SqlParameter("Downloadable", (jRecord["Downloadable"].ToString() == "true" ? "1" : "0")));
+                            cmd.Parameters.Add(new SqlParameter("Downloadable", (jRecord["Downloadable"].ToString().ToLower() == "true" ? "1" : "0")));
                             cmd.Parameters.Add(new SqlParameter("MessageForNotDownloadable", jRecord["MessageForNotDownloadable"].ToString()));
                             cmd.Parameters.Add(new SqlParameter("RatingAge", jRecord["RatingAge"].ToString()));
 
